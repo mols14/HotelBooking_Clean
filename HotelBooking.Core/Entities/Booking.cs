@@ -3,7 +3,7 @@
 namespace HotelBooking.Core
 {
     
-    // Test Test Test
+    // Test Test Test Test
     public class Booking
     {
         public int Id { get; set; }
