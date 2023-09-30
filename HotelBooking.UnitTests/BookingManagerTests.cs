@@ -4,6 +4,7 @@ using HotelBooking.Core;
 using HotelBooking.UnitTests.Fakes;
 using Xunit;
 using System.Linq;
+using HotelBooking.Infrastructure.Repositories;
 
 namespace HotelBooking.UnitTests
 {
@@ -40,47 +41,15 @@ namespace HotelBooking.UnitTests
             // Assert
             Assert.True(FakeBookingRepository.addWasCalled);
         }
-        
-        [Fact]
-        public void CreateBooking_RoomOccupied_ReturnFalse()
-        {
-            // Arrange
-            var booking = new Booking
-            {
-                Id = 1,
-                StartDate = DateTime.Today.AddDays(11),
-                EndDate = DateTime.Today.AddDays(12),
-                IsActive = false,
-                CustomerId = 1,
-                Customer = new Customer(),
-                RoomId = 1,
-                Room = new Room(),
-            };
-            // Act
-            var result = bookingManager.CreateBooking(booking);
-            // Assert
-            Assert.False(result);
-        }
 
-        [Fact]
-        public void CreateBooking_RoomAvailable_ReturnsTrue()
+        [Theory]
+        [MemberData(nameof(TestDataGenerator.CreateBookingRoomAvailableData), MemberType = typeof(TestDataGenerator))]
+        public void CreateBooking_RoomAvailable_ReturnsTrue(Booking booking, bool expected)
         {
-            // Arrange
-            var booking = new Booking
-            {
-                Id = 1,
-                StartDate = DateTime.Today.AddDays(2),
-                EndDate = DateTime.Today.AddDays(3),
-                IsActive = false,
-                CustomerId = 1,
-                Customer = new Customer(),
-                RoomId = 1,
-                Room = new Room(),
-            };
             // Act
             var result = bookingManager.CreateBooking(booking);
             // Assert
-            Assert.True(result);
+            Assert.Equal(expected, result);
         }
 
         [Fact]

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using HotelBooking.Core;
 
 namespace HotelBooking.UnitTests.Fakes;
 
@@ -63,6 +64,46 @@ public class TestDataGenerator
             new object[] { DateTime.Today.AddDays(7), DateTime.Today.AddDays(12), GetDateTimesBetweenTwoDates(DateTime.Today.AddDays(7), DateTime.Today.AddDays(12)) },
             new object[] { DateTime.Today.AddDays(10), DateTime.Today.AddDays(12), GetDateTimesBetweenTwoDates(DateTime.Today.AddDays(10), DateTime.Today.AddDays(12)) },
             new object[] { DateTime.Today.AddDays(10), DateTime.Today.AddDays(20), GetDateTimesBetweenTwoDates(DateTime.Today.AddDays(10), DateTime.Today.AddDays(20)) },
+        };
+        return data;
+    }
+
+    public static IEnumerable<object[]> CreateBookingRoomAvailableData()
+    {
+        var booking = new Booking
+        {
+            Id = 1,
+            StartDate = DateTime.Today.AddDays(2),
+            EndDate = DateTime.Today.AddDays(3),
+            IsActive = false,
+            CustomerId = 1,
+            Customer = new Customer(),
+            RoomId = 1,
+            Room = new Room(),
+        };
+        
+        var data = new List<object[]>()
+        {
+            new object[] { new Booking { 
+                Id = 1,
+                StartDate = DateTime.Today.AddDays(2),
+                EndDate = DateTime.Today.AddDays(3),
+                IsActive = false,
+                CustomerId = 1,
+                Customer = new Customer(),
+                RoomId = 1,
+                Room = new Room(),
+            }, true },
+            new object[] { new Booking { 
+                Id = 1,
+                StartDate = DateTime.Today.AddDays(11),
+                EndDate = DateTime.Today.AddDays(12),
+                IsActive = false,
+                CustomerId = 1,
+                Customer = new Customer(),
+                RoomId = 1,
+                Room = new Room(),
+            }, false }
         };
         return data;
     }
