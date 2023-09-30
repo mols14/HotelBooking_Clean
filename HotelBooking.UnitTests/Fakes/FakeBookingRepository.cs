@@ -17,10 +17,11 @@ namespace HotelBooking.UnitTests.Fakes
 
         // This field is exposed so that a unit test can validate that the
         // Add method was invoked.
-        public bool addWasCalled = false;
+        public static bool addWasCalled = false;
 
         public void Add(Booking entity)
         {
+            
             addWasCalled = true;
         }
 
