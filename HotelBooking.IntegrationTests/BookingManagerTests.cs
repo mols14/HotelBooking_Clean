@@ -1,7 +1,10 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using HotelBooking.Core;
 using HotelBooking.Infrastructure;
 using HotelBooking.Infrastructure.Repositories;
+using HotelBooking.IntegrationTests.Utils;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using Xunit;
@@ -18,6 +21,7 @@ namespace HotelBooking.IntegrationTests
 
         SqliteConnection connection;
         BookingManager bookingManager;
+        private readonly BookingRepository bookingRepos;
 
         public BookingManagerTests()
         {
@@ -34,7 +38,7 @@ namespace HotelBooking.IntegrationTests
             dbInitializer.Initialize(dbContext);
 
             // Create repositories and BookingManager
-            var bookingRepos = new BookingRepository(dbContext);
+            bookingRepos = new BookingRepository(dbContext);
             var roomRepos = new RoomRepository(dbContext);
             bookingManager = new BookingManager(bookingRepos, roomRepos);
         }
@@ -44,7 +48,7 @@ namespace HotelBooking.IntegrationTests
             // This will delete the in-memory database
             connection.Close();
         }
-
+        
         [Fact]
         public void FindAvailableRoom_RoomNotAvailable_RoomIdIsMinusOne()
         {
@@ -52,6 +56,66 @@ namespace HotelBooking.IntegrationTests
             var roomId = bookingManager.FindAvailableRoom(DateTime.Today.AddDays(8), DateTime.Today.AddDays(8));
             // Assert
             Assert.Equal(-1, roomId);
+        }
+        
+        [Theory]
+        [MemberData(nameof(TestDataGenerator.CreateBookingRoomAvailable), MemberType = typeof(TestDataGenerator))]
+        public void FindAvailableRoom_RoomAvailable_ReturnsRoomId(DateTime start, DateTime end, List<int> expected)
+        {
+            // Act
+            var roomId = bookingManager.FindAvailableRoom(start, end);
+            // Assert
+            Assert.InRange(roomId, expected[0], expected[2]);
+        }
+        
+        [Fact]
+        public void CreateBooking_WithBooking_AddsBookingToDb()
+        {
+            // Arrange
+            DateTime date = DateTime.Today.AddDays(1);
+            var booking = new Booking
+            {
+                StartDate = date,
+                EndDate = date.AddDays(2),
+                IsActive = true,
+                CustomerId = 1,
+                RoomId = 3
+            };
+            // Act
+            bookingManager.CreateBooking(booking);
+            // Assert
+            Assert.Equal(4, bookingRepos.GetAll().Count());
+        }
+
+        [Fact]
+        public void CreateBooking_OccupiedRoom_DoesNotAddBooking()
+        {
+            // Arrange
+            DateTime date = DateTime.Today.AddDays(1);
+            var booking = new Booking
+            {
+                StartDate=date,
+                EndDate=date.AddDays(14),
+                IsActive=false,
+                CustomerId=1,
+                RoomId=1
+            };
+            // Act
+            bookingManager.CreateBooking(booking);
+            // Assert
+            Assert.Equal(3, bookingRepos.GetAll().Count());
+        }
+
+        [Fact]
+        public void GetFullyOccupiedDates_WithDates_ReturnsOccupiedDates()
+        {
+            // Arrange
+            var start = DateTime.Today.AddDays(10);
+            var end = DateTime.Today.AddDays(15);
+            // Act
+            var result = bookingManager.GetFullyOccupiedDates(start, end);
+            // Assert
+            Assert.Equal(OccupiedDates.GetDateTimesBetweenTwoDates(start,end), result);
         }
     }
 }

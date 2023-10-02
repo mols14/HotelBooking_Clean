@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Xunit.Abstractions;
+using Xunit.Sdk;
 
 namespace HotelBooking.Core
 {
@@ -8,7 +10,6 @@ namespace HotelBooking.Core
     {
         private IRepository<Booking> bookingRepository;
         private IRepository<Room> roomRepository;
-
         // Constructor injection
         public BookingManager(IRepository<Booking> bookingRepository, IRepository<Room> roomRepository)
         {
@@ -59,7 +60,7 @@ namespace HotelBooking.Core
             List<DateTime> fullyOccupiedDates = new List<DateTime>();
             int noOfRooms = roomRepository.GetAll().Count();
             var bookings = bookingRepository.GetAll();
-
+            
             if (bookings.Any())
             {
                 for (DateTime d = startDate; d <= endDate; d = d.AddDays(1))
@@ -73,6 +74,5 @@ namespace HotelBooking.Core
             }
             return fullyOccupiedDates;
         }
-
     }
 }
