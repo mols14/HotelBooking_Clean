@@ -26,11 +26,7 @@ public class CreateBookingStepDefinition
         };
         var bookings = new List<Booking>
         {
-            new Booking { StartDate=DateTime.Now.AddDays(5), EndDate=DateTime.Now.AddDays(10), RoomId=1, IsActive=false},
-            new Booking { StartDate=DateTime.Now.AddDays(11), EndDate=DateTime.Now.AddDays(15), RoomId=1, IsActive=false},
             new Booking { StartDate=DateTime.Parse("2023-12-02"), EndDate=DateTime.Parse("2023-12-07"), RoomId=1, IsActive=true},
-            new Booking { StartDate=DateTime.Now.AddDays(5), EndDate=DateTime.Now.AddDays(10), RoomId=2, IsActive=false},
-            new Booking { StartDate=DateTime.Now.AddDays(11), EndDate=DateTime.Now.AddDays(15), RoomId=2, IsActive=false},
             new Booking { StartDate=DateTime.Parse("2023-12-02"), EndDate=DateTime.Parse("2023-12-07"), RoomId=2, IsActive=true},
         };
 
@@ -63,7 +59,7 @@ public class CreateBookingStepDefinition
             EndDate = endDate
         };
 
-        _bookingManager.CreateBooking(booking);
+        canBookRoom = _bookingManager.CreateBooking(booking);
     }
 
     [Then(@"the booking should be successful")]
