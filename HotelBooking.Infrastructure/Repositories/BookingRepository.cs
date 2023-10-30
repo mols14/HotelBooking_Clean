@@ -42,6 +42,5 @@ namespace HotelBooking.Infrastructure.Repositories
             db.Booking.Remove(booking);
             db.SaveChanges();
         }
-
     }
 }
