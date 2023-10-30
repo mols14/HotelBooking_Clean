@@ -30,8 +30,11 @@ public class CreateBookingStepDefinition
         startDate = DateTime.Parse(sd);
         endDate = DateTime.Parse(ed);
 
-        canBookRoom = (startDate <= fullyOccupiedEndDate && endDate >= fullyOccupiedStartDate) ||
-                      (startDate > endDate);
+        if (startDate < fullyOccupiedEndDate && endDate > fullyOccupiedEndDate || startDate <)
+        {
+            canBookRoom = true;
+        }
+        else canBookRoom = false;
     }
 
     [Then(@"the booking should be successful")]

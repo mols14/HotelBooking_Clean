@@ -12,7 +12,6 @@ Scenario: 1. Book room when StartDate and EndDate is before fully occupied range
 	
 Scenario: 2. Book room when StartDate is after the fully occupied range and EndDate is after the fully occupied range 
 	When I request to create a booking with SD "2023-12-10" and ED "2023-12-15"
-
 	Then the booking should be successful
 	
 Scenario: 3. Cannot book a room when StartDate is after the fully occupied range and the EndDate is before the fully occupied date
