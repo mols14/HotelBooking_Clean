@@ -81,7 +81,7 @@ namespace HotelBooking.Specs.Features
 #line 6
  #line hidden
 #line 7
-  testRunner.Given("the fully occupied range is from \"2023-12-01\" to \"2023-12-05\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+  testRunner.Given("the fully occupied range is from \"2023-12-02\" to \"2023-12-07\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
         }
         
@@ -90,14 +90,14 @@ namespace HotelBooking.Specs.Features
             this.TestTearDown();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="1. Book room when StartDate and EndDate is before fully occupied range")]
+        [Xunit.SkippableFactAttribute(DisplayName="1. Book room when StartDate and EndDate is after fully occupied range")]
         [Xunit.TraitAttribute("FeatureTitle", "CreateBooking")]
-        [Xunit.TraitAttribute("Description", "1. Book room when StartDate and EndDate is before fully occupied range")]
-        public virtual void _1_BookRoomWhenStartDateAndEndDateIsBeforeFullyOccupiedRange()
+        [Xunit.TraitAttribute("Description", "1. Book room when StartDate and EndDate is after fully occupied range")]
+        public virtual void _1_BookRoomWhenStartDateAndEndDateIsAfterFullyOccupiedRange()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("1. Book room when StartDate and EndDate is before fully occupied range", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("1. Book room when StartDate and EndDate is after fully occupied range", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 9
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -122,7 +122,7 @@ this.ScenarioInitialize(scenarioInfo);
  this.FeatureBackground();
 #line hidden
 #line 10
- testRunner.When("I request to create a booking with SD \"2023-11-28\" and ED \"2023-11-30\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("I request to create a booking with SD \"2023-12-08\" and ED \"2023-12-09\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 11
  testRunner.Then("the booking should be successful", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
@@ -166,7 +166,7 @@ this.ScenarioInitialize(scenarioInfo);
  this.FeatureBackground();
 #line hidden
 #line 14
- testRunner.When("I request to create a booking with SD \"2023-12-10\" and ED \"2023-12-15\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("I request to create a booking with SD \"2023-11-04\" and ED \"2023-11-07\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 15
  testRunner.Then("the booking should be successful", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
@@ -175,17 +175,17 @@ this.ScenarioInitialize(scenarioInfo);
             this.ScenarioCleanup();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="3. Cannot book a room when StartDate is after the fully occupied range and the En" +
-            "dDate is before the fully occupied date")]
+        [Xunit.SkippableFactAttribute(DisplayName="3. Cannot book a room when StartDate is before the fully occupied start range and" +
+            " the EndDate is before the fully occupied end date")]
         [Xunit.TraitAttribute("FeatureTitle", "CreateBooking")]
-        [Xunit.TraitAttribute("Description", "3. Cannot book a room when StartDate is after the fully occupied range and the En" +
-            "dDate is before the fully occupied date")]
-        public virtual void _3_CannotBookARoomWhenStartDateIsAfterTheFullyOccupiedRangeAndTheEndDateIsBeforeTheFullyOccupiedDate()
+        [Xunit.TraitAttribute("Description", "3. Cannot book a room when StartDate is before the fully occupied start range and" +
+            " the EndDate is before the fully occupied end date")]
+        public virtual void _3_CannotBookARoomWhenStartDateIsBeforeTheFullyOccupiedStartRangeAndTheEndDateIsBeforeTheFullyOccupiedEndDate()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("3. Cannot book a room when StartDate is after the fully occupied range and the En" +
-                    "dDate is before the fully occupied date", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("3. Cannot book a room when StartDate is before the fully occupied start range and" +
+                    " the EndDate is before the fully occupied end date", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 17
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -210,7 +210,7 @@ this.ScenarioInitialize(scenarioInfo);
  this.FeatureBackground();
 #line hidden
 #line 18
- testRunner.When("I request to create a booking with SD \"2023-12-06\" and ED \"2023-11-10\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("I request to create a booking with SD \"2023-12-01\" and ED \"2023-12-05\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 19
  testRunner.Then("the booking should fail", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
@@ -219,17 +219,17 @@ this.ScenarioInitialize(scenarioInfo);
             this.ScenarioCleanup();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="4. Cannot book a room when StartDate is one day before the fully occupied starts " +
-            "range and EndDate is the first day of the fully occupied range")]
+        [Xunit.SkippableFactAttribute(DisplayName="4. Cannot book a room when StartDate is before the fully occupied start range and" +
+            " EndDate is before the fully occupied end date")]
         [Xunit.TraitAttribute("FeatureTitle", "CreateBooking")]
-        [Xunit.TraitAttribute("Description", "4. Cannot book a room when StartDate is one day before the fully occupied starts " +
-            "range and EndDate is the first day of the fully occupied range")]
-        public virtual void _4_CannotBookARoomWhenStartDateIsOneDayBeforeTheFullyOccupiedStartsRangeAndEndDateIsTheFirstDayOfTheFullyOccupiedRange()
+        [Xunit.TraitAttribute("Description", "4. Cannot book a room when StartDate is before the fully occupied start range and" +
+            " EndDate is before the fully occupied end date")]
+        public virtual void _4_CannotBookARoomWhenStartDateIsBeforeTheFullyOccupiedStartRangeAndEndDateIsBeforeTheFullyOccupiedEndDate()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("4. Cannot book a room when StartDate is one day before the fully occupied starts " +
-                    "range and EndDate is the first day of the fully occupied range", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("4. Cannot book a room when StartDate is before the fully occupied start range and" +
+                    " EndDate is before the fully occupied end date", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 21
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -254,7 +254,7 @@ this.ScenarioInitialize(scenarioInfo);
  this.FeatureBackground();
 #line hidden
 #line 22
- testRunner.When("I request to create a booking with SD \"2023-11-30\" and ED \"2023-12-01\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("I request to create a booking with SD \"2023-11-03\" and ED \"2023-12-04\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 23
  testRunner.Then("the booking should fail", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
@@ -263,17 +263,17 @@ this.ScenarioInitialize(scenarioInfo);
             this.ScenarioCleanup();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="5. Cannot book a room when StartDate is before the fully occupied range and the E" +
-            "ndDate is the last day of the fully occupied range")]
+        [Xunit.SkippableFactAttribute(DisplayName="5. Cannot book a room when StartDate is before the fully occupied start range and" +
+            " the EndDate is after the fully occupied end range")]
         [Xunit.TraitAttribute("FeatureTitle", "CreateBooking")]
-        [Xunit.TraitAttribute("Description", "5. Cannot book a room when StartDate is before the fully occupied range and the E" +
-            "ndDate is the last day of the fully occupied range")]
-        public virtual void _5_CannotBookARoomWhenStartDateIsBeforeTheFullyOccupiedRangeAndTheEndDateIsTheLastDayOfTheFullyOccupiedRange()
+        [Xunit.TraitAttribute("Description", "5. Cannot book a room when StartDate is before the fully occupied start range and" +
+            " the EndDate is after the fully occupied end range")]
+        public virtual void _5_CannotBookARoomWhenStartDateIsBeforeTheFullyOccupiedStartRangeAndTheEndDateIsAfterTheFullyOccupiedEndRange()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("5. Cannot book a room when StartDate is before the fully occupied range and the E" +
-                    "ndDate is the last day of the fully occupied range", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("5. Cannot book a room when StartDate is before the fully occupied start range and" +
+                    " the EndDate is after the fully occupied end range", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 25
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -298,7 +298,7 @@ this.ScenarioInitialize(scenarioInfo);
  this.FeatureBackground();
 #line hidden
 #line 26
- testRunner.When("I request to create a booking with SD \"2023-11-30\" and ED \"2023-12-05\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("I request to create a booking with SD \"2023-12-01\" and ED \"2023-12-09\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 27
  testRunner.Then("the booking should fail", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
@@ -307,17 +307,17 @@ this.ScenarioInitialize(scenarioInfo);
             this.ScenarioCleanup();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="6. Cannot book a room when StartDate is the first day of the fully occupied range" +
-            " and the EndDate is a day after the fully occupied range")]
+        [Xunit.SkippableFactAttribute(DisplayName="6. Cannot book a room when StartDate is after the fully occupied start range and " +
+            "the EndDate is after the fully occupied range")]
         [Xunit.TraitAttribute("FeatureTitle", "CreateBooking")]
-        [Xunit.TraitAttribute("Description", "6. Cannot book a room when StartDate is the first day of the fully occupied range" +
-            " and the EndDate is a day after the fully occupied range")]
-        public virtual void _6_CannotBookARoomWhenStartDateIsTheFirstDayOfTheFullyOccupiedRangeAndTheEndDateIsADayAfterTheFullyOccupiedRange()
+        [Xunit.TraitAttribute("Description", "6. Cannot book a room when StartDate is after the fully occupied start range and " +
+            "the EndDate is after the fully occupied range")]
+        public virtual void _6_CannotBookARoomWhenStartDateIsAfterTheFullyOccupiedStartRangeAndTheEndDateIsAfterTheFullyOccupiedRange()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("6. Cannot book a room when StartDate is the first day of the fully occupied range" +
-                    " and the EndDate is a day after the fully occupied range", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("6. Cannot book a room when StartDate is after the fully occupied start range and " +
+                    "the EndDate is after the fully occupied range", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 29
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -342,7 +342,7 @@ this.ScenarioInitialize(scenarioInfo);
  this.FeatureBackground();
 #line hidden
 #line 30
- testRunner.When("I request to create a booking with SD \"2023-12-01\" and ED \"2023-12-06\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("I request to create a booking with SD \"2023-12-03\" and ED \"2024-01-01\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 31
  testRunner.Then("the booking should fail", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
@@ -351,17 +351,17 @@ this.ScenarioInitialize(scenarioInfo);
             this.ScenarioCleanup();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="7. Cannot book a room when StartDate is the last day of the fully occupied range " +
-            "and EndDate is a day after the fully occupied range")]
+        [Xunit.SkippableFactAttribute(DisplayName="7. Cannot book a room when StartDate and enddate is within the fully occupied ran" +
+            "ge")]
         [Xunit.TraitAttribute("FeatureTitle", "CreateBooking")]
-        [Xunit.TraitAttribute("Description", "7. Cannot book a room when StartDate is the last day of the fully occupied range " +
-            "and EndDate is a day after the fully occupied range")]
-        public virtual void _7_CannotBookARoomWhenStartDateIsTheLastDayOfTheFullyOccupiedRangeAndEndDateIsADayAfterTheFullyOccupiedRange()
+        [Xunit.TraitAttribute("Description", "7. Cannot book a room when StartDate and enddate is within the fully occupied ran" +
+            "ge")]
+        public virtual void _7_CannotBookARoomWhenStartDateAndEnddateIsWithinTheFullyOccupiedRange()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("7. Cannot book a room when StartDate is the last day of the fully occupied range " +
-                    "and EndDate is a day after the fully occupied range", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("7. Cannot book a room when StartDate and enddate is within the fully occupied ran" +
+                    "ge", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 33
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -386,7 +386,7 @@ this.ScenarioInitialize(scenarioInfo);
  this.FeatureBackground();
 #line hidden
 #line 34
- testRunner.When("I request to create a booking with SD \"2023-12-05\" and ED \"2023-12-9\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("I request to create a booking with SD \"2023-12-03\" and ED \"2023-12-5\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 35
  testRunner.Then("the booking should fail", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");

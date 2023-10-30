@@ -21,7 +21,6 @@ namespace HotelBooking.UnitTests.Fakes
 
         public void Add(Booking entity)
         {
-            
             addWasCalled = true;
         }
 
